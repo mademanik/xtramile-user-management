@@ -1,0 +1,33 @@
+services:
+  xtramile-app:
+    build: .
+    container_name: xtramile-app
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=xtramile-db
+      - DB_PORT=3306
+      - DB_DATABASE=xtramile_db
+      - DB_USERNAME=xtramile
+      - DB_PASSWORD=xtramile
+    depends_on:
+      - xtramile-db
+    command: sh -c "sleep 20 && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"
+    networks:
+      - xtramile-network
+
+  xtramile-db:
+    image: mysql:8.0
+    container_name: xtramile-db
+    environment:
+      - MYSQL_DATABASE=xtramile_db
+      - MYSQL_USER=xtramile
+      - MYSQL_PASSWORD=xtramile
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - xtramile-network
+
+networks:
+  xtramile-network:
+    external: true

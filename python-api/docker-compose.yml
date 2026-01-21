@@ -1,0 +1,12 @@
+services:
+  python-api:
+    build: .
+    container_name: python-api
+    ports:
+      - "5000:5000"
+    networks:
+      - xtramile-network
+
+networks:
+  xtramile-network:
+    external: true

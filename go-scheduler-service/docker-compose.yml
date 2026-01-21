@@ -1,0 +1,13 @@
+services:
+  go-scheduler-service:
+    build: .
+    container_name: go-scheduler-service
+    environment:
+      - PHP_API_URL=http://xtramile-app:8080/api/users
+      - PYTHON_API_URL=http://python-api:5000/receive
+    networks:
+      - xtramile-network
+
+networks:
+  xtramile-network:
+    external: true

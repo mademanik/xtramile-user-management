@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build: .
+    container_name: react-frontend
+    ports:
+      - "4135:4135"
+    networks:
+      - xtramile-network
+
+networks:
+  xtramile-network:
+    external: true

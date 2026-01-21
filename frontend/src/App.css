@@ -1,0 +1,72 @@
+:root {
+    --primary: #2563eb;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --border: #e2e8f0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.container {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border);
+}
+
+h2 { margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; }
+
+.form-group { margin-bottom: 1rem; }
+
+label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; }
+
+input {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-sizing: border-box; /* Sangat penting agar padding tidak merusak lebar */
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    ring: 2px solid var(--primary);
+}
+
+button {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+button:hover { opacity: 0.9; }
+
+.result-card {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+}
+
+.result-card h3 { color: #166534; font-size: 1rem; margin-top: 0; }
+.result-card p { margin: 0.25rem 0; font-size: 0.875rem; }
