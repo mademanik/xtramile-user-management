@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css' // Import CSS baru
+import './App.css'
 
 function App() {
     const [name, setName] = useState('')
@@ -9,11 +9,11 @@ function App() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:8080/api/users', {
+            const response = await fetch(import.meta.env.VITE_API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email }),
-            })
+            });
             const data = await response.json()
             setUserResult(data)
         } catch (err) {

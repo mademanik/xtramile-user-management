@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/receive', methods=['POST'])
 def receive_data():
     data = request.json
-    print(f"Data diterima dari Go Service: {data}", flush=True)
+    print(f"Receive data from Go Service: {data}", flush=True)
     return jsonify({"status": "success", "received": data}), 200
 
 if __name__ == '__main__':

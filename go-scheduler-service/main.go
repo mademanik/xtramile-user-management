@@ -28,7 +28,6 @@ func main() {
 	for {
 		fmt.Println("Checking for new data...")
 		
-		// Simulasi data untuk dikirim ke PHP API
 		user := User{Name: "David Jonson", Email: "david@example.com"}
 		jsonData, _ := json.Marshal(user)
 		
@@ -36,19 +35,17 @@ func main() {
 		if err != nil {
 			fmt.Printf("Error connecting to PHP API: %v\n", err)
 		} else {
-			defer resp.Body.Close() // Pastikan body ditutup
+			defer resp.Body.Close()
 			if resp.StatusCode == http.StatusCreated {
 				var createdUser User
 				if err := json.NewDecoder(resp.Body).Decode(&createdUser); err == nil {
 					
-					// Simpan ke file
 					fileName := fmt.Sprintf("user_%d.json", createdUser.ID)
 					fileData, _ := json.MarshalIndent(createdUser, "", "  ")
 					os.WriteFile(fileName, fileData, 0644)
 
-					// Cek filter "David"
 					if strings.HasPrefix(createdUser.Name, "David") {
-						fmt.Println("Nama diawali 'David', mengirim ke Python Service...")
+						fmt.Println("Name contain 'David', send to Python Service...")
 						http.Post(pythonAPI, "application/json", bytes.NewBuffer(fileData))
 					}
 				}

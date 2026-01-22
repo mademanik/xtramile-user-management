@@ -5,7 +5,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-# Ekspos port 4135 sesuai instruksi
 EXPOSE 4135
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

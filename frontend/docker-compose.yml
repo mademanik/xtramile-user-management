@@ -1,5 +1,5 @@
 services:
-  frontend:
+  react-frontend:
     build: .
     container_name: react-frontend
     ports:
